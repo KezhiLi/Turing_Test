@@ -224,6 +224,7 @@ for nframe = 1:Nfrm_movie  %num_csv;  % 476
 
     Y_1 = read(vr, nframe); 
     image(Y_1)
+    axis off
     set(handles.text4,'String',['Please select if it is real or simulated. Press "pause" to pause; press "stop" to terminate and see the result. current frame: ',num2str( nframe),'/600. file: ' num2str( nf),'/40']);
     pause(0.06)
     if show_lay < 1
@@ -608,7 +609,8 @@ end
 user = get(handles.edit1,'String');
 
 %writetable(handles.result,'myData.xls','Sheet',2,'Range','B2:F6')
-writetable(handles.result,'myData.xls','Sheet',[user,'__',num2str(folder_no)])
+%writetable(handles.result,'myData.xls','Sheet',[user,'__',num2str(folder_no)])
+writetable(handles.result,'myData.xls','Sheet',strcat(user,'__',num2str(folder_no)));
 
 close(gcbf) 
 Turing_test
